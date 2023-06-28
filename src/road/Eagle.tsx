@@ -1,20 +1,14 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { useCallback, useEffect, useMemo, useRef } from "react";
-import { customPos } from "../types";
-import { eagle } from "../game";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import {
   CuboidCollider,
   RapierRigidBody,
   RigidBody,
-  euler,
   quat,
 } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 
-type Props = {
-  position?: customPos;
-};
 const Eagle = () => {
   const eagle1Ref = useRef<RapierRigidBody>(null);
   const eagle2Ref = useRef<RapierRigidBody>(null);

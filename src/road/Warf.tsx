@@ -1,7 +1,3 @@
-import vertext from "../shader/warf/vertex.glsl";
-import fragment from "../shader/warf/fragment.glsl";
-import particleVertex from "../shader/warf/particle/vertex.glsl";
-import particleFragment from "../shader/warf/particle/fragment.glsl";
 import { extend, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import {
@@ -51,10 +47,7 @@ const Warf = ({ position = [0, 0, 0], animationName = "" }: Props) => {
   useFrame((state, delta) => {
     if (!checkPointref.current || !particleRef.current) return;
     const clock = state.clock.getElapsedTime();
-    const material = checkPointref.current.material as ShaderMaterial;
     checkPointref.current.rotation.set(0, clock, 0);
-
-    const particleMaterial = particleRef.current.material as ShaderMaterial;
 
     const arr = (
       particleRef.current.geometry.attributes.position as BufferAttribute

@@ -27,7 +27,6 @@ const App = () => {
             <AirPlane />
             <Road />
             <MyCloud />
-            {/* <CloudFactory /> */}
             <EndPoint />
           </Physics>
         </Canvas>

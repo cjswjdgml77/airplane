@@ -3,19 +3,19 @@ import { useFrame } from "@react-three/fiber";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
 import * as THREE from "three";
-import useGame from "../stores/useGame";
+// import useGame from "../stores/useGame";
 
 const EndPoint = () => {
   const ref = useRef<THREE.Mesh>(null);
   const texture = useTexture("./textures/goal.png");
   const { scene, animations } = useGLTF("./model/end-point.glb");
   const { actions } = useAnimations(animations, scene);
-  const setStage = useGame((state) => state.setStage);
+  //   const setStage = useGame((state) => state.setStage);
   actions["move"]?.play();
   actions["move2"]?.play();
   actions["move3"]?.play();
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     if (!ref.current) return;
     const clock = state.clock.getElapsedTime();
     const position = ref.current.geometry.attributes.position;

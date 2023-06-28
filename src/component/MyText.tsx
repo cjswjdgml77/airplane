@@ -1,6 +1,6 @@
 import { Text3D } from "@react-three/drei";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Mesh } from "three";
 import useGame from "../stores/useGame";
 type Props = {

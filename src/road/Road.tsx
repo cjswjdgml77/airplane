@@ -1,10 +1,9 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo } from "react";
 import * as THREE from "three";
-import { eagle, road } from "../game";
+import { road } from "../game";
 import { useGLTF } from "@react-three/drei";
 import Eagle from "./Eagle";
 import MyText from "../component/MyText";
-import useGame from "../stores/useGame";
 import Warf from "./Warf";
 import { RigidBody } from "@react-three/rapier";
 const Road = () => {
@@ -35,7 +34,7 @@ const Road = () => {
     shape.lineTo(0, 1);
     return shape;
   }, []);
-  const currentText = useGame((state) => state.currentText);
+
   return (
     <>
       <group>

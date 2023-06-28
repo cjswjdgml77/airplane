@@ -1,5 +1,5 @@
 import { shaderMaterial } from "@react-three/drei";
-import { Object3DNode, ShaderMaterialProps } from "@react-three/fiber";
+import { ShaderMaterialProps } from "@react-three/fiber";
 import * as THREE from "three";
 const WarfShader = shaderMaterial(
   { uColor: new THREE.Color(1.0, 0.38, 0.369) },

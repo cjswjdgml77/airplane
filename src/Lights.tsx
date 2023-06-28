@@ -1,12 +1,9 @@
-import { useHelper } from "@react-three/drei";
-import { LightNode, useFrame } from "@react-three/fiber";
-
 import { useRef } from "react";
-import { DirectionalLight, DirectionalLightHelper } from "three";
+import { DirectionalLight } from "three";
 
 const Lights = () => {
   const ref = useRef<DirectionalLight>(null);
-  useHelper(ref, DirectionalLightHelper);
+  // useHelper(ref, DirectionalLightHelper);
   return (
     <>
       <directionalLight

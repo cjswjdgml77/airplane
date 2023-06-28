@@ -1,16 +1,15 @@
 import { useGLTF, useKeyboardControls } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import {
   BallCollider,
-  CuboidCollider,
   RapierRigidBody,
   RigidBody,
   quat,
   vec3,
 } from "@react-three/rapier";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import * as THREE from "three";
-import useGame from "../stores/useGame";
+// import useGame from "../stores/useGame";
 
 const AirPlane = () => {
   const { scene } = useGLTF("./model/airplane.glb");
@@ -18,11 +17,10 @@ const AirPlane = () => {
   const [subscribeKeys, getKeys] = useKeyboardControls();
   const [smoothCamera] = useState(() => new THREE.Vector3());
   const [smoothTarget] = useState(() => new THREE.Vector3());
-  const setText = useGame((state) => state.setText);
+  // const setText = useGame((state) => state.setText);
   useFrame((state, delta) => {
     if (!plane.current) return;
-    const { forward, right, backward, left, up, down } = getKeys();
-    const pos = plane.current.translation();
+    const { forward, right, backward, left } = getKeys();
     const impluse = { x: 0, y: 0, z: 0 };
     const implusStrength = 20 * delta;
     const bladeStrength = 30;
@@ -147,26 +145,7 @@ const AirPlane = () => {
     //   setText("sixth");
     // }
   });
-  useEffect(() => {
-    const subForward = subscribeKeys(
-      (state) => state.forward,
-      (pressed) => {
-        if (!plane.current) return;
-        const rotate = quat(plane.current?.rotation());
 
-        plane.current.setRotation(rotate, true);
-      }
-    );
-    const subBackward = subscribeKeys(
-      (state) => state.backward,
-      (pressed) => {
-        if (!plane.current) return;
-        const rotate = quat(plane.current?.rotation());
-        rotate.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI);
-        plane.current.setRotation(rotate, true);
-      }
-    );
-  }, []);
   return (
     <>
       <RigidBody
